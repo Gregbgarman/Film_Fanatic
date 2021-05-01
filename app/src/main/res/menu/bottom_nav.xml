@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itHome"
+        android:icon="@drawable/reel"
+        android:title="Home" />
+    <item
+        android:id="@+id/itWishList"
+        android:icon="@drawable/reel"
+        android:title="WishList" />
+    <item
+        android:id="@+id/itMoviesSeen"
+        android:icon="@drawable/reel"
+        android:title="MoviesSeen" />
+
+</menu>
