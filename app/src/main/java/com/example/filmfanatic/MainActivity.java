@@ -20,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.example.filmfanatic.fragments.HomeFragment;
 import com.example.filmfanatic.fragments.SettingsFragment;
 import com.example.filmfanatic.fragments.WishListFragment;
+import com.example.filmfanatic.maps.MapsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
@@ -62,7 +63,8 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
                         break;
                     case R.id.itMoviesSeen:
                     default:
-                       fragment= null;
+                       fragment= new MapsFragment();
+                        getSupportActionBar().setTitle("NEARBY THEATERS");
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
