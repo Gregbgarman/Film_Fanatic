@@ -1,5 +1,7 @@
 package com.example.filmfanatic.maps;
 
+import android.location.Location;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -16,13 +18,14 @@ public class DataParser {
         String vicinity="NA";
         String latitude="NA";
         String longitude="NA";
-        String reference="NA";
         String place_id="NA";
         String PlacePhoto="NA";
         String PlaceRating="NA";
         String PlaceReviewers="NA";
 
         String CheckMovieTheater="";
+        Double DistanceFromUser;
+        float f[]=new float[10];
 
 
         try {
@@ -50,8 +53,10 @@ public class DataParser {
             if (!googlePlaceJson.isNull("user_ratings_total")) {
                 PlaceReviewers=googlePlaceJson.getString("user_ratings_total");
             }
-            if (!googlePlaceJson.isNull("photo_reference")) {   //needs to be redone-json array
-                PlacePhoto=googlePlaceJson.getJSONObject("photos").getString("photo_reference");
+
+            if (!googlePlaceJson.isNull("photos")) {
+                PlacePhoto= googlePlaceJson.getJSONArray("photos").getJSONObject(0).getString("photo_reference");
+
             }
 
             latitude=googlePlaceJson.getJSONObject("geometry").getJSONObject("location").getString("lat");
@@ -68,6 +73,12 @@ public class DataParser {
             googlePlaceMap.put("photo_reference",PlacePhoto);
             googlePlaceMap.put("rating",PlaceRating);
             googlePlaceMap.put("user_ratings_total",PlaceReviewers);
+
+            Location.distanceBetween(MapsFragment.HomeLatLng.latitude,MapsFragment.HomeLatLng.longitude,
+                    Double.parseDouble(googlePlaceMap.get("lat")),Double.parseDouble(googlePlaceMap.get("lng")),f);
+
+            DistanceFromUser=f[0]*3.28084/5280;
+            googlePlaceMap.put("distance_away",String.valueOf(DistanceFromUser));
 
 
         }catch (JSONException e) {

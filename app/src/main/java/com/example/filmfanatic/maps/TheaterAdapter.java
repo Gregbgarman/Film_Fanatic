@@ -2,6 +2,7 @@ package com.example.filmfanatic.maps;
 
 import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +49,7 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
     @NonNull
     @Override
     public TheaterAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View theater= LayoutInflater.from(context).inflate(R.layout.each_theater, parent, false);    //change
+        View theater= LayoutInflater.from(context).inflate(R.layout.each_theater, parent, false);
         return new TheaterAdapter.ViewHolder(theater);
     }
 
@@ -90,12 +91,17 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
             tvName.setText(hashMap.get("place_name").toString());
             tvAddress.setText(hashMap.get("vicinity").toString());
 
+            float f[]=new float[10];
+            Location.distanceBetween(MapsFragment.HomeLatLng.latitude,MapsFragment.HomeLatLng.longitude,Currentlat,Currentlng,f);
+            double Miles=f[0]*3.28084/5280;
+
+            tvDistance.setText( String.format("%.2f", Miles) + " mi");
+
             btnLocation.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
 
                     MapsFragment.TheMap.clear();
-
 
                     for (int i=0;i<AllPlaces.size();i++){
 
@@ -110,15 +116,7 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
 
 
                         }
-/*
-                        else if (latLng.equals(MapsFragment.HomeLatLng)){
-                            Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
-                                    .position(latLng)
-                                    .title(("Your Location"))
-                                    .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
-                        }
-*/
                         else{
                             Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
                                     .position(latLng)
@@ -126,15 +124,25 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
 
                         }
-
                     }
 
                     Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
                             .position(MapsFragment.HomeLatLng)
-                            .title(("Your Location"))
+                            .title(("You"))
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
-                    MapsFragment.TheMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Currentlat,Currentlng),11));
+                   // MapsFragment.TheMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Currentlat,Currentlng),11));
+                    MapsFragment.TheMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Currentlat,Currentlng),11));
+                }
+            });
+
+            btnMore.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent i=new Intent(context,TheaterActivity.class);
+                    i.putExtra("TheaterInfo",Parcels.wrap(hashMap));
+                    context.startActivity(i);
+
 
                 }
             });

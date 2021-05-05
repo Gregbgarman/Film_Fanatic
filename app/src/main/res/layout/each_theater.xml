@@ -56,6 +56,7 @@
         android:layout_marginStart="4dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/btnLocation"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent"

@@ -61,6 +61,8 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     public static Context mycontext;
     public static LatLng HomeLatLng;
 
+    public static List<HashMap<String,String>> AllLocations;
+
 
     private OnMapReadyCallback callback = new OnMapReadyCallback() {
 
@@ -75,7 +77,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
             TheMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
                 @Override
                 public boolean onMarkerClick(Marker marker) {
-                   marker.showInfoWindow();
+                    UpdateMap(marker);
                     return true;
                 }
             });
@@ -133,13 +135,32 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
             CurrentLocationMarker.remove();
 
         LatLng latLng=new LatLng(location.getLatitude(),location.getLongitude());
+
+
+
+
+
         MarkerOptions markerOptions=new MarkerOptions();        //used to set colors,titles etc
         markerOptions.position(latLng);
-        markerOptions.title("Your Current Location");
+        markerOptions.title("Your Location");
         markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
-        CurrentLocationMarker=TheMap.addMarker(markerOptions);
+
+        Marker marker=TheMap.addMarker(markerOptions);
+        marker.showInfoWindow();
+        CurrentLocationMarker=marker;
 
         TheMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
+
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                marker.hideInfoWindow();
+
+            }
+        }, 2000);
+
+
 
         if (client!=null){
             LocationServices.FusedLocationApi.removeLocationUpdates(client,this);
@@ -226,6 +247,46 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
         rvTheaters.setAdapter(theaterAdapter);
         rvTheaters.setLayoutManager(new LinearLayoutManager(mycontext));
         theaterAdapter.notifyDataSetChanged();
+
+        AllLocations=AllPlaces;
+    }
+
+    public void UpdateMap(Marker markerr){
+        TheMap.clear();
+        LatLng CurrentLatLng=markerr.getPosition();
+
+        for (int i=0;i<AllLocations.size();i++){
+
+            LatLng latLng=new LatLng(Double.parseDouble(AllLocations.get(i).get("lat")), Double.parseDouble(AllLocations.get(i).get("lng")));
+
+            if (latLng.equals(CurrentLatLng)){
+                Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title(AllLocations.get(i).get("place_name").toString() )
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                marker.showInfoWindow();
+
+            }
+
+            else{
+                Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
+                        .position(latLng)
+                        .title(AllLocations.get(i).get("place_name").toString() )
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+
+            }
+        }
+
+        Marker marker = MapsFragment.TheMap.addMarker(new MarkerOptions()
+                .position(MapsFragment.HomeLatLng)
+                .title(("Your Location"))
+                .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+
+        if (CurrentLatLng.equals(HomeLatLng))
+            marker.showInfoWindow();
+
+        MapsFragment.TheMap.animateCamera(CameraUpdateFactory.newLatLngZoom(CurrentLatLng,11));
+
 
     }
 

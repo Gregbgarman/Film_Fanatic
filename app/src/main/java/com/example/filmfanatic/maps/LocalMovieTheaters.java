@@ -1,5 +1,6 @@
 package com.example.filmfanatic.maps;
 
+import android.location.Location;
 import android.os.AsyncTask;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,6 +18,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -49,11 +51,12 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
     }
 
     @Override
-    protected void onPostExecute(String s) {                    //this runs once
-        NearbyPlaceList=null;                               //need this
+    protected void onPostExecute(String s) {
+        NearbyPlaceList=null;
         DataParser dataParser=new DataParser();
         NearbyPlaceList=dataParser.parse(s);
         showNearbyPlaces(NearbyPlaceList);
+        SortPlacesByDistance();
         MapsFragment.BindAdapter(NearbyPlaceList);
 
     }
@@ -72,11 +75,7 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
             markerOptions.position(new LatLng(lat,lng));
             markerOptions.title(placeName);
 
-
-
-
             markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
-
             googleMap.addMarker(markerOptions);
 
         }
@@ -118,6 +117,32 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
         return data;
     }
 
+    public void SortPlacesByDistance(){
 
+        HashMap<String,String> HMArray[]=new HashMap[NearbyPlaceList.size()];
+        HashMap<String,String> HM;
+
+        for (int i=0;i<NearbyPlaceList.size();i++){
+            HMArray[i]=NearbyPlaceList.get(i);
+        }
+
+        for (int i=0;i<NearbyPlaceList.size();i++){
+            for (int j=0;j<NearbyPlaceList.size()-1;j++){
+                if (Double.parseDouble(HMArray[j].get("distance_away"))>Double.parseDouble(HMArray[j+1].get("distance_away"))){
+                    HashMap<String,String> temp=HMArray[j];
+                    HMArray[j]=HMArray[j+1];
+                    HMArray[j+1]=temp;
+                }
+            }
+        }
+
+        NearbyPlaceList.clear();
+
+        for (int i=0;i<HMArray.length;i++){
+            NearbyPlaceList.add(HMArray[i]);
+        }
+
+
+    }
 
 }
