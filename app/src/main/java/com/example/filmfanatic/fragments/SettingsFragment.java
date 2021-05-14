@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.provider.OpenableColumns;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -58,6 +59,10 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        MainActivity.actionBar.setHomeAsUpIndicator(R.drawable.backarrow);
+        MainActivity.actionBar.setDisplayHomeAsUpEnabled(true);
+
+
 
         TheUserName=view.findViewById(R.id.tvDisplayUserName);
         SettingsProfileImage=view.findViewById(R.id.SettingsProfileImage);
@@ -95,7 +100,11 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+
+
     }
+
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -145,6 +154,7 @@ public class SettingsFragment extends Fragment {
             settingsFragmentInterface = (SettingsFragmentInterface) context;
         }
 
+
         else{
             throw new RuntimeException(context.toString()+
                     "must implement SettingsFragmentInterface");
@@ -177,4 +187,7 @@ public class SettingsFragment extends Fragment {
         }
         return result;
     }
+
+
+
 }

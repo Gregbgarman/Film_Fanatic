@@ -1,16 +1,20 @@
 package com.example.filmfanatic;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.filmfanatic.maps.TheaterActivity;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -33,6 +37,12 @@ public class LoginActivity extends AppCompatActivity {
         etPassword=findViewById(R.id.etPassword);
         btnLogin=findViewById(R.id.btnLogin);
         btnSignUp=findViewById(R.id.btnSignUp);
+
+        getSupportActionBar().hide();
+        Window window = getWindow();      //setting status bar color
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(LoginActivity.this,R.color.coolgreen));
 
 
         if(ParseUser.getCurrentUser() != null) {
@@ -72,8 +82,6 @@ public class LoginActivity extends AppCompatActivity {
                 user.setUsername(etUserName.getText().toString());
                 user.setPassword(etPassword.getText().toString());
 
-
-
                 user.signUpInBackground(new SignUpCallback() {
                     public void done(ParseException e) {
                         if (e == null) {
@@ -82,14 +90,10 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         else {
                             Toast.makeText(LoginActivity.this,"Could not create account",Toast.LENGTH_LONG).show();
-
                         }
                     }
 
                 });
-
-
-
 
             }
         });

@@ -1,6 +1,8 @@
 package com.example.filmfanatic;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -9,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.media.Image;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -16,6 +19,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.filmfanatic.dialogs.ReviewDialogFragment;
+import com.example.filmfanatic.fragments.SettingsFragment;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
@@ -48,6 +52,12 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie_review);
+
+        MainActivity.SetTopBars( MovieReviewActivity.this,getSupportActionBar(),getWindow());
+
+        getSupportActionBar().setHomeAsUpIndicator(R.drawable.backarrow);       //setting the back arrow
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         swipeContainer=findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -140,5 +150,18 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
         ReviewList.clear();
         queryReviews();
     }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {  //for selecting back button
+        Fragment fragment;
+        switch(item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+
+        return true;
+    }
+
 
 }

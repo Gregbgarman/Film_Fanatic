@@ -9,6 +9,9 @@
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="30dp"
+        app:civ_border_color="@color/coolgreen"
+        app:civ_border_overlay="true"
+        app:civ_circle_background_color="#d3d3d3"
         android:layout_height="30dp"
         android:id="@+id/menupic"
         app:civ_fill_color="@color/cardview_light_background"
