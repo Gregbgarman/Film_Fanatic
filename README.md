@@ -25,14 +25,16 @@ opportunity for learning new skills and reinforcing old ones.
 
 ## Walkthrough videos of features
 
-creating account and Viewing movies
+### creating account and Viewing movies
 <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/filmfan1.gif" width=250><br>
 
-Leaving movie review and adding movie to Wishlist
+
+### Leaving movie review and adding movie to Wishlist
 <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/filmfan2.gif" width=250><br>
 
-Google Maps features
-<img src="https://github.com/Runner-s-High/runners-high-app/blob/main/2nd%20walkthrouhg.gif" width=250><br>
+
+### Google Maps features
+<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/filmfan3.gif" width=250><br>
 
 
 
