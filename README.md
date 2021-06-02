@@ -72,6 +72,10 @@ opportunity for learning new skills and reinforcing old ones.
      * Theater Screen
             * Displays name, address, and an image for the theater
             * Contains a list of real Google reviews that Google users have left for the theater
+     
+     * Settings Screen
+           * Pressing button allows user to logout
+           * Pressing button allows user to change profile picture by loading from photo gallery
             
 ## Models
 **Film (stored in Parse backend)**
