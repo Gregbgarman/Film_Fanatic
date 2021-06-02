@@ -38,12 +38,21 @@ opportunity for learning new skills and reinforcing old ones.
 
 
 
-##Future features that could enhance app
+## Screen Archetypes
+      - Splash Screen
+            - Briefly shown upon user entering app
+            
+      - Login/Register Screen
+            - Login/Registration Fields
+     
+
+
+## Future features that could enhance app
 - Having access to information regarding each theater's movie showing times
 - Having a list of movie trailers in a fragment or activity
-- Upcoming movies can be viewed by the user
+- Upcoming movies can also be viewed by the user
 
-##Other Information
+## Other Information
 - API keys needed for this app are:
       Google Maps API
       The Movie Database API
