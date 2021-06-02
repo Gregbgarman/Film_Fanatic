@@ -25,7 +25,7 @@ opportunity for learning new skills and reinforcing old ones.
 
 ## Walkthrough videos of features
 
-### creating account and Viewing movies
+### creating account and Viewing movies currently playing
 <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/filmfan1.gif" width=250><br>
 
 
