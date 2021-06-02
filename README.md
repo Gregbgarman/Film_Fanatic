@@ -14,7 +14,7 @@ opportunity for learning new skills and reinforcing old ones.
 ## Features
 - User account creation using Parse
 - List of movies currently playing in theaters is viewed using The Movie Database
-- User can see a description of each movie, who the director is, and leading roles
+- User can see a description of each movie, who the director is, leading roles, and a critic score
 - Users can watch a Youtube trailer of each of these movies using a YouTubePlayer
 - Users can leave a review for any movie they would like to as well as see reviews left by other app users
 - Users can save movies they would like to see to their "Wishlist"
@@ -39,12 +39,41 @@ opportunity for learning new skills and reinforcing old ones.
 
 
 ## Screen Archetypes
-      - Splash Screen
-            - Briefly shown upon user entering app
+      * Splash Screen
+            * Briefly shown upon user entering app
             
-      - Login/Register Screen
-            - Login/Registration Fields
+      * Login/Register Screen
+            * Login/Registration Fields
+      
+      * Home Screen
+            * Displays movies currently playing in a list (recyclerview)
      
+     * Movie Screen
+            * Contains YouTube PLayer
+            * Shows movie director and leading roles/actors
+            * Contains button to add the movie to the "Wishlist"           
+      
+     * Movie Review Screen
+            * Contains a list of reviews left by all users for a given movie
+            * User can enter a dialog to leave review
+            
+     * Wishlist Screen
+            * Contains all movies in a list (recylcerview) that the user has added to their "Wishlist"
+                 
+     * WishList Movie Screen
+            * Displays YouTube Player to watch movie trailer and movie description
+            * Contains button to remove movie from Wishlist
+     
+     * Google Maps Screen
+            * Displays user location and theaters on the map
+            * Displays a list of nearby theaters in a recyclerview
+            * User can click button to gain information for a theater
+            
+     * Theater Screen
+            * Displays name, address, and an image for the theater
+            * Contains a list of real Google reviews that Google users have left for the theater
+            
+            
 
 
 ## Future features that could enhance app
