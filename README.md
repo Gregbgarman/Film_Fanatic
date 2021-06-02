@@ -1,4 +1,4 @@
-# Film_Fanatic
+# Film Fanatic
 
 ## OverView
 Film Fanatic is a movie app that allows users to gain information on current movies playing and nearby theaters
