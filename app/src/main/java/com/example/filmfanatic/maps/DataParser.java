@@ -12,22 +12,25 @@ import java.util.List;
 
 public class DataParser {
 
-    private HashMap<String,String> getPlace(JSONObject googlePlaceJson){
-        HashMap<String,String> googlePlaceMap=new HashMap<>();
-        String placeName="NA";
-        String vicinity="NA";
-        String latitude="NA";
-        String longitude="NA";
-        String place_id="NA";
-        String PlacePhoto="NA";
-        String PlaceRating="NA";
-        String PlaceReviewers="NA";
+    private String placeName,vicinity,latitude,longitude,place_id,PlacePhoto,PlaceRating,PlaceReviewers,CheckMovieTheater;
+    private Double DistanceFromUser;
+    private HashMap<String,String> googlePlaceMap;
 
-        String CheckMovieTheater="";
-        Double DistanceFromUser;
+    private HashMap<String,String> getPlace(JSONObject googlePlaceJson){
+        googlePlaceMap=new HashMap<>();
+        placeName="NA";
+        vicinity="NA";
+        latitude="NA";
+        longitude="NA";
+        place_id="NA";
+        PlacePhoto="NA";
+        PlaceRating="NA";
+        PlaceReviewers="NA";
+        CheckMovieTheater="";
+
         float f[]=new float[10];
 
-
+                                                        //parsing json data for movie theaters
         try {
             if (!googlePlaceJson.isNull("types")) {
 

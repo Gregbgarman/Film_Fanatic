@@ -6,6 +6,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
+    //class given to me in CodePath course that shows formatted difference of time from current
+    //time and that of a prior time
+
 public class TimeFormatter {
     public static String getTimeDifference(String rawJsonDate) {
         String time = "";

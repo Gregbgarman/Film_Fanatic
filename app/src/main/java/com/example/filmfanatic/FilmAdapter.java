@@ -48,10 +48,10 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvTitle;
-        TextView tvRating;
-        ImageView ivPoster;
-        LinearLayout container;
+        private TextView tvTitle;
+        private TextView tvRating;
+        private ImageView ivPoster;
+        private LinearLayout container;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

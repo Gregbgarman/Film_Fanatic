@@ -29,11 +29,11 @@ import java.util.List;
 
 public class WishListActivity extends YouTubeBaseActivity {
 
-    YouTubePlayerView youTubePlayerView;
-    TextView tvTitle;
-    TextView tvDescription;
-    TextView tvRating;
-    Button RemoveFilm;
+    private YouTubePlayerView youTubePlayerView;
+    private TextView tvTitle;
+    private TextView tvDescription;
+    private TextView tvRating;
+    private Button RemoveFilm;
 
     public static final String TAG="WLActivity";
 
@@ -52,8 +52,8 @@ public class WishListActivity extends YouTubeBaseActivity {
 
         tvTitle.setText(film.getFilmTitle());
         tvDescription.setText("OVERVIEW: " + film.getFilmDescription());
-        Float f=(float)film.getFilmRating();
-        tvRating.setText(f.toString() + "/10");
+        Float f=(float)film.getFilmRating()/2;
+        tvRating.setText(f.toString() + "/5");
 
         youTubePlayerView.initialize(MovieExpandedActivity.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
             @Override

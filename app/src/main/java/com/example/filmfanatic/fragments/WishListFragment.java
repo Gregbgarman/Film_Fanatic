@@ -26,10 +26,10 @@ import java.util.List;
 
 public class WishListFragment extends Fragment {
 
-     public static List<Film> films;
-     public RecyclerView rvWishList;
-     public static WishListAdapter wishListAdapter;
-     public int WishListCount;
+    public static List<Film> films;
+    private RecyclerView rvWishList;
+    public static WishListAdapter wishListAdapter;
+    private int WishListCount;
 
     public WishListFragment() {
         // Required empty public constructor
@@ -49,15 +49,13 @@ public class WishListFragment extends Fragment {
             queryWishList();
         }
 
-
-
     }
 
-    public void queryWishList(){
+    public void queryWishList(){                                    //querying user's wishlist of movies
         ParseQuery<Film> query=ParseQuery.getQuery(Film.class);
         query.include(Film.KEY_USER);
-        query.whereEqualTo(Film.KEY_USER, ParseUser.getCurrentUser());      //I think this is the crucial line
-        query.addDescendingOrder(Film.KEY_CREATED_AT);      //orders posts by time
+        query.whereEqualTo(Film.KEY_USER, ParseUser.getCurrentUser());
+        query.addDescendingOrder(Film.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Film>() {
             @Override
             public void done(List<Film> thefilms, ParseException e) {
@@ -65,16 +63,12 @@ public class WishListFragment extends Fragment {
                     return;
                 }
 
-
-
                 films.addAll(thefilms);
                 wishListAdapter.notifyDataSetChanged();
             }
         });
 
     }
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {

@@ -35,21 +35,19 @@ import static com.parse.Parse.getApplicationContext;
 
 public class ReviewDialogFragment extends DialogFragment {
 
-    Movie ReviewMovie;
-    Button btnSubmit;
-    Button btnCancel;
-    RatingBar ratingBar;
-    EditText TextReview;
-    TextView tvUsername;
+    private Movie ReviewMovie;
+    private Button btnSubmit;
+    private Button btnCancel;
+    private RatingBar ratingBar;
+    private EditText TextReview;
+    private TextView tvUsername;
+    private Float RatingBarValue;
 
-    Float RatingBarValue;
+    private UpdateAdapterInterface updateAdapterInterface;
 
-    UpdateAdapterInterface updateAdapterInterface;
-    public interface UpdateAdapterInterface{
+    public interface UpdateAdapterInterface{        //used to update adapter for list of comments
         public void UpdateAdapter();
     }
-
-
 
     public ReviewDialogFragment(Movie ReviewMovie) {
         this.ReviewMovie=ReviewMovie;
@@ -75,7 +73,7 @@ public class ReviewDialogFragment extends DialogFragment {
             }
         });
 
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
+        btnSubmit.setOnClickListener(new View.OnClickListener() {       //review saved to Parse and updates adapter
             @Override
             public void onClick(View v) {
                 Review review=new Review();
@@ -119,7 +117,7 @@ public class ReviewDialogFragment extends DialogFragment {
     }
 
     @Override
-    public void onAttach(@NonNull Context context) {
+    public void onAttach(@NonNull Context context) {    //attaching interface
         super.onAttach(context);
 
         if(context instanceof ReviewDialogFragment.UpdateAdapterInterface){

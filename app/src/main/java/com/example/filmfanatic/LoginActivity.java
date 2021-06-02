@@ -22,10 +22,10 @@ import com.parse.SignUpCallback;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText etUserName;
-    EditText etPassword;
-    Button btnLogin;
-    Button btnSignUp;
+    private EditText etUserName;
+    private EditText etPassword;
+    private Button btnLogin;
+    private Button btnSignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

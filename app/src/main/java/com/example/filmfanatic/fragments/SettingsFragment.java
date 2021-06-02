@@ -42,14 +42,13 @@ import static com.parse.Parse.getApplicationContext;
 
 public class SettingsFragment extends Fragment {
 
-    SettingsFragmentInterface settingsFragmentInterface;
-
-    TextView TheUserName;
-    CircleImageView SettingsProfileImage;
-    Button btnChangePic;
-    Button btnLogOut;
-    Uri imageuri;
-    ParseFile NewProfilePicture;
+    private SettingsFragmentInterface settingsFragmentInterface;
+    private TextView TheUserName;
+    private CircleImageView SettingsProfileImage;
+    private Button btnChangePic;
+    private Button btnLogOut;
+    private Uri imageuri;
+    private ParseFile NewProfilePicture;
 
     public SettingsFragment() {
         // Required empty public constructor
@@ -62,20 +61,19 @@ public class SettingsFragment extends Fragment {
         MainActivity.actionBar.setHomeAsUpIndicator(R.drawable.backarrow);
         MainActivity.actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-
         TheUserName=view.findViewById(R.id.tvDisplayUserName);
         SettingsProfileImage=view.findViewById(R.id.SettingsProfileImage);
         btnChangePic=view.findViewById(R.id.btnChangePic);
         btnLogOut=view.findViewById(R.id.btnLogOut);
 
-        TheUserName.setText(ParseUser.getCurrentUser().getUsername().toString());
+        TheUserName.setText(ParseUser.getCurrentUser().getUsername().toString());       //display user name
         SettingsProfileImage.setImageResource(R.drawable.reel);
 
+                                                        //loading user profile picture
         if (MainActivity.UserImage != null) {
             Glide.with(getApplicationContext()).load(MainActivity.UserImage.getUrl()).into(SettingsProfileImage);
         }
-        else
+        else                                        //default image if can't load profile picture
             SettingsProfileImage.setImageResource(R.drawable.popcorn);
 
         if (MainActivity.NewProfilePictureUri!=null)
@@ -89,7 +87,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-        btnChangePic.setOnClickListener(new View.OnClickListener() {
+        btnChangePic.setOnClickListener(new View.OnClickListener() {        //load image from photo gallery
             @Override
             public void onClick(View v) {
                 Intent photogallery=new Intent();
@@ -100,11 +98,7 @@ public class SettingsFragment extends Fragment {
             }
         });
 
-
-
     }
-
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -113,7 +107,6 @@ public class SettingsFragment extends Fragment {
         if (requestCode==754 && resultCode==RESULT_OK){
             imageuri=data.getData();
             InputStream inputstream=null;
-
 
             Glide.with(getContext()).load(imageuri).into(MainActivity.ProfilePic);
             Glide.with(getContext()).load(imageuri).into(SettingsProfileImage);
@@ -128,7 +121,7 @@ public class SettingsFragment extends Fragment {
                 NewProfilePicture = new ParseFile(filename, buffer);
                 inputstream.close();
 
-                //update for user here on cloud
+                //update user profile picture here on cloud/Parse
                 MainActivity.CurrentUser.put("ProfilePicture",NewProfilePicture);
                 MainActivity.CurrentUser.saveInBackground();
 
@@ -154,7 +147,6 @@ public class SettingsFragment extends Fragment {
             settingsFragmentInterface = (SettingsFragmentInterface) context;
         }
 
-
         else{
             throw new RuntimeException(context.toString()+
                     "must implement SettingsFragmentInterface");
@@ -166,7 +158,7 @@ public class SettingsFragment extends Fragment {
         public void LogOut();
     }
 
-    public String getFileName(Uri uri) {
+    public String getFileName(Uri uri) {    //converting uri to string
         String result = null;
         if (uri.getScheme().equals("content")) {
             Cursor cursor = getContext().getContentResolver().query(uri, null, null, null, null);

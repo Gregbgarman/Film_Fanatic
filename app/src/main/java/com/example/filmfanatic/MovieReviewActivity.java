@@ -34,18 +34,17 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
 
     public static final String TAG="MovieReviewActivity";
 
-    TextView tvCriticScore;
-    TextView tvFanScore;
-    TextView tvTitle;
-    Button btnWriteReview;
-    ImageView backdrop;
-    RecyclerView rvReviews;
-    ReviewAdapter reviewAdapter;
-    List<Review> ReviewList;
-    Movie MovieToReview;
-    double FanReviewScore=0;
-
-    SwipeRefreshLayout swipeContainer;
+    private TextView tvCriticScore;
+    private TextView tvFanScore;
+    private TextView tvTitle;
+    private Button btnWriteReview;
+    private ImageView backdrop;
+    private RecyclerView rvReviews;
+    private ReviewAdapter reviewAdapter;
+    private List<Review> ReviewList;
+    private Movie MovieToReview;
+    private double FanReviewScore=0;
+    private SwipeRefreshLayout swipeContainer;
 
 
     @Override
@@ -69,11 +68,9 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
             @Override
             public void onRefresh() {
                 Log.i(TAG,"fetching new data");
-                queryReviews();
+                queryReviews();                         //refreshing review list
             }
         });
-
-
 
 
         MovieToReview= Parcels.unwrap(getIntent().getParcelableExtra("MovieToReview"));
@@ -83,8 +80,6 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
         backdrop=findViewById(R.id.ivReviewBackdrop);
         rvReviews=findViewById(R.id.rvReviews);
         tvTitle=findViewById(R.id.tvTitleMRA);
-
-
 
         tvTitle.setText(MovieToReview.getTitle().toString());
         tvCriticScore.setText("Critics Score: " + (MovieToReview.getRating()/2) + "/5");
@@ -111,10 +106,10 @@ public class MovieReviewActivity extends AppCompatActivity implements ReviewDial
 
     public void queryReviews(){
 
-        ParseQuery<Review> query=ParseQuery.getQuery(Review.class);     //not querying by user anymore,, could be issue
+        ParseQuery<Review> query=ParseQuery.getQuery(Review.class);
         query.include(Review.KEY_REVIEW_TITLE);
         query.whereEqualTo(Review.KEY_REVIEW_TITLE, MovieToReview.getTitle());
-        query.addDescendingOrder(Review.KEY_CREATEDAT);      //orders posts by time
+        query.addDescendingOrder(Review.KEY_CREATEDAT);      //orders reviews by chronological order
         query.findInBackground(new FindCallback<Review>() {
             @Override
             public void done(List<Review> theReviews, ParseException e) {

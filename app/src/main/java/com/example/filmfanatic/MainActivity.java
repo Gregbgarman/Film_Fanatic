@@ -147,8 +147,8 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
 
         fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
 
-        View view=bottomNavigationView;         //hides the bottom menu bar with items
-        view.setVisibility(View.INVISIBLE);
+        View view=bottomNavigationView;         //hides the bottom menu bar with items when go to the settings
+        view.setVisibility(View.INVISIBLE);     //fragment
 
         return true;
     }
@@ -184,7 +184,7 @@ public class MainActivity extends AppCompatActivity implements SettingsFragment.
        actionBar.setHomeAsUpIndicator(R.drawable.movieimagesmall);     //setting top left icon anytime fxn called
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-       // ActionBar actionBar1 = actionBar;            //setting action bar color
+                   //setting action bar color
         actionBar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#0F9D58")));
 
         Window window = Topwindow;                   //setting status bar color

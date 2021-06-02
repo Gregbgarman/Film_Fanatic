@@ -14,7 +14,7 @@ public class Review extends ParseObject {
     public static final String KEY_RATING_VALUE="RatingValue";
     public static final String KEY_REVIEW_USER="ReviewUser";
     public static final String KEY_PROFILE_IMAGE="ProfileImage";
-//profile picture also eventually
+
 
     public static String GetTimeStamp (String createdAt){
         return TimeFormatter.getTimeDifference(createdAt).toString();

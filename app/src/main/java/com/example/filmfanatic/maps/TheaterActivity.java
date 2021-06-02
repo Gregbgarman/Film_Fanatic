@@ -35,22 +35,22 @@ import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
-public class TheaterActivity extends AppCompatActivity {
+public class TheaterActivity extends AppCompatActivity {        //class used to show data for each theater
 
-    Button btnWebsite;
-    Button btnCallTheater;
-    TextView tvTheaterName;
-    TextView tvTheaterAddress;
-    ImageView ivTheaterImage;
-    RatingBar ratingBar;
-    TextView tvReviewcount;
+    private Button btnWebsite;
+    private Button btnCallTheater;
+    private TextView tvTheaterName;
+    private TextView tvTheaterAddress;
+    private ImageView ivTheaterImage;
+    private RatingBar ratingBar;
+    private TextView tvReviewcount;
     public static RecyclerView rvGoogleComments;
     public static TheaterDetailsAdapter theaterDetailsAdapter;
     public static Context context;
 
-    Double Latitude;
-    Double Longitude;
-    String PlaceSearch;
+    private Double Latitude;
+    private Double Longitude;
+    private String PlaceSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +81,7 @@ public class TheaterActivity extends AppCompatActivity {
 
         String photoreference=HMTheaterInfo.get("photo_reference").toString();
 
-        String ImageSearch="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + photoreference +"&key=AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
+        String ImageSearch="https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photo_reference=" + photoreference +"&key="+getResources().getString(R.string.google_maps_key);
 
         Uri uri =  Uri.parse( ImageSearch );
 
@@ -95,10 +95,7 @@ public class TheaterActivity extends AppCompatActivity {
         }
 
 
-        PlaceSearch="https://maps.googleapis.com/maps/api/place/details/json?place_id="+ HMTheaterInfo.get("place_id") + "&fields=website,reviews,international_phone_number&key=%20AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
-       // https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJM4ZYb-r17IgRs6KnB6XrM_M&fields=website,opening_hours,reviews,formatted_phone_number,international_phone_number&key=%20AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8
-
-        //PlaceSearch="https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJM4ZYb-r17IgRs6KnB6XrM_M&fields=website,opening_hours,reviews,formatted_phone_number,international_phone_number&key=%20AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
+        PlaceSearch="https://maps.googleapis.com/maps/api/place/details/json?place_id="+ HMTheaterInfo.get("place_id") + "&fields=website,reviews,international_phone_number&key=" +getResources().getString(R.string.google_maps_key);
 
         Object dataTransfer[]=new Object[1];
         dataTransfer[0]=PlaceSearch;
@@ -107,7 +104,7 @@ public class TheaterActivity extends AppCompatActivity {
         placesData.execute(dataTransfer);
 
 
-        btnWebsite.setOnClickListener(new View.OnClickListener() {
+        btnWebsite.setOnClickListener(new View.OnClickListener() {      //user can visit website for each theater
             @Override
             public void onClick(View v) {
                 AlertDialog.Builder builder= new AlertDialog.Builder(TheaterActivity.this);
@@ -127,7 +124,7 @@ public class TheaterActivity extends AppCompatActivity {
             }
         });
 
-        btnCallTheater.setOnClickListener(new View.OnClickListener() {
+        btnCallTheater.setOnClickListener(new View.OnClickListener() {      //user can call each theater
             @Override
             public void onClick(View v) {
 
@@ -185,10 +182,6 @@ public class TheaterActivity extends AppCompatActivity {
         rvGoogleComments.setAdapter(theaterDetailsAdapter);
         rvGoogleComments.setLayoutManager(new LinearLayoutManager(context));
         theaterDetailsAdapter.notifyDataSetChanged();
-
-
     }
-
-
 
 }

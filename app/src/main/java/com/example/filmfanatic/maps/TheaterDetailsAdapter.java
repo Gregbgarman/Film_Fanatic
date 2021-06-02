@@ -48,11 +48,11 @@ public class TheaterDetailsAdapter extends RecyclerView.Adapter<TheaterDetailsAd
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvGoogleReviewerName;
-        TextView tvGoogleReview;
-        TextView tvReviewTime;
-        RatingBar ratingBar;
-        ImageView ivGoogleProfileImage;
+        private TextView tvGoogleReviewerName;
+        private TextView tvGoogleReview;
+        private TextView tvReviewTime;
+        private RatingBar ratingBar;
+        private ImageView ivGoogleProfileImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -64,7 +64,7 @@ public class TheaterDetailsAdapter extends RecyclerView.Adapter<TheaterDetailsAd
 
         }
 
-        public void bind(HashMap hashMap) {                 //we are getting here
+        public void bind(HashMap hashMap) {                 //google reviews
 
             tvGoogleReviewerName.setText(hashMap.get("reviewer").toString());
             tvGoogleReview.setText(hashMap.get("review").toString());

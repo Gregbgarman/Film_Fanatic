@@ -54,11 +54,11 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvReview;
-        RatingBar ReviewBar;
-        CircleImageView ivReviewPic;
-        TextView username;
-        TextView tvTime;
+        private TextView tvReview;
+        private RatingBar ReviewBar;
+        private CircleImageView ivReviewPic;
+        private TextView username;
+        private TextView tvTime;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -81,8 +81,6 @@ public class ReviewAdapter extends RecyclerView.Adapter<ReviewAdapter.ViewHolder
 
             else
                 Glide.with(getApplicationContext()).load(R.drawable.reel).into(ivReviewPic);
-                                    //change to popcorn at some point
-
 
         }
     }

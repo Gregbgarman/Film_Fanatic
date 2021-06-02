@@ -15,8 +15,8 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class PlacesData extends AsyncTask<Object, String, String> {
 
-    String url;
-    String PlacesData;
+    private String url;
+    private String PlacesData;
 
     public static List<HashMap<String,String>> NearbyTheaterData;
     public static HashMap<String,String> WebsitePhone;
@@ -58,7 +58,7 @@ public class PlacesData extends AsyncTask<Object, String, String> {
             BufferedReader br=new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer sb=new StringBuffer();
 
-            String line="";                                     //if not null, append to stringbuffer, and convert to string
+            String line="";                                     //if not null, appends to stringbuffer, and convert to string
             while((line=br.readLine())!=null){
                 sb.append(line);
             }

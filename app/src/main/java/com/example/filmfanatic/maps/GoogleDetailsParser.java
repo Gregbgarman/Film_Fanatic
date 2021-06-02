@@ -10,14 +10,16 @@ import java.util.List;
 
 public class GoogleDetailsParser {
 
+    private String reviewer,ProfilePhoto,rating,TimeofReview,TheReview;
+    private HashMap<String,String> GoogleDetails;
 
     private HashMap<String,String> getDetail(JSONObject googleDetailJson){
-        HashMap<String,String> GoogleDetails=new HashMap<>();
-        String reviewer="NA";
-        String ProfilePhoto="NA";
-        String rating="NA";
-        String TimeofReview="NA";
-        String TheReview="NA";
+        GoogleDetails=new HashMap<>();
+        reviewer="NA";
+        ProfilePhoto="NA";
+        rating="NA";
+        TimeofReview="NA";
+        TheReview="NA";
 
         try {
             if (!googleDetailJson.isNull("author_name")) {
@@ -91,10 +93,8 @@ public class GoogleDetailsParser {
     public HashMap<String,String> getWebsitePhoneNumber(String jsondata){
         HashMap<String,String> WebsitePhoneNumber=new HashMap<>();
         JSONObject jsonObject;
-        String phonenumber=null;        //interesting-had to declare variables or else wouldnt enter try/catch
+        String phonenumber=null;
         String website=null;
-
-
 
         try {
             jsonObject=new JSONObject(jsondata);
@@ -120,12 +120,9 @@ public class GoogleDetailsParser {
             else
                 WebsitePhoneNumber.put("website","NA");
 
-
-
-
         return WebsitePhoneNumber;
 
     }
 
-    //2 calls will need to get made-this above fxn will get just website/number and the other gives all reviews
+
 }

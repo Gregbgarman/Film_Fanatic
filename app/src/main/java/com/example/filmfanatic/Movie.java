@@ -4,7 +4,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.parceler.Parcel;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +20,7 @@ public class Movie {        //has all the info/image to display for each movie e
     public Movie(){}     //empty constructor needed by the parceler library
 
     public Movie(JSONObject jsonObject) throws JSONException {     //constructor
-        posterPath=jsonObject.getString("poster_path");     //getting stuff from json file/api
+        posterPath=jsonObject.getString("poster_path");     //getting info from json file/api
         title=jsonObject.getString("title");
         overview=jsonObject.getString("overview");
         backdropPath=jsonObject.getString("backdrop_path");
@@ -37,11 +36,9 @@ public class Movie {        //has all the info/image to display for each movie e
         return movies;
     }
 
-
-
     public String getPosterPath() {
 
-        return String.format("https://image.tmdb.org/t/p/w342/%s",posterPath);
+        return String.format("https://image.tmdb.org/t/p/w342/%s",posterPath);      //%s appends the posterPath
     }
 
     public String getTitle() {

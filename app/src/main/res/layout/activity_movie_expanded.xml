@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+
+
+
+
+<ScrollView
 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +11,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MovieExpandedActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
 
     <com.google.android.youtube.player.YouTubePlayerView
         android:id="@+id/playerWLActivity"
@@ -86,5 +96,224 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/scrollView3" />
+        
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="15sp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Film Director"
+            android:textSize="35sp" />
+
+        <ImageView
+            android:id="@+id/ivDirectorImage"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@drawable/popcorn" />
+
+        <TextView
+            android:id="@+id/tvDirectorName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="DirectorName"
+            android:textSize="20sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15sp"/>
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cast"
+            android:textSize="35sp" />
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TableRow>
+
+        <ImageView
+            android:id="@+id/ivCastMember1"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvCastMember1Role"
+                    android:layout_width="250dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="40dp"
+                    android:text="CastMemberonerole"
+                    android:textSize="25sp" />
+
+            </TableRow>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvCastMember1"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CastMember1" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35sp"/>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TableRow>
+
+        <ImageView
+            android:id="@+id/ivCastMember2"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvCastMember2Role"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="35dp"
+                android:text="CastMemberroleeeeeeeeeeeeeee"
+                android:textSize="25sp" />
+
+
+        </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvCastMember2"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CastMember2" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35sp"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TableRow>
+
+
+        <ImageView
+            android:id="@+id/ivCastMember3"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvCastMember3Role"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="35dp"
+                android:text="CastMemberrole"
+                android:textSize="25sp" />
+
+
+        </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvCastMember3"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CastMember3" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35sp"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TableRow>
+
+
+        <ImageView
+            android:id="@+id/ivCastMember4"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvCastMember4Role"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="35dp"
+                android:text="CastMemberrole"
+                android:textSize="25sp" />
+
+        </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvCastMember4"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CastMember4" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35sp"/>
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        <TableRow>
+
+
+        <ImageView
+            android:id="@+id/ivCastMember5"
+            android:scaleType="centerCrop"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            tools:src="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/tvCastMember5Role"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:textSize="25sp"
+            android:paddingLeft="35dp"
+            android:text="CastMemberrole"
+            />
+
+        </TableRow>
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/tvCastMember5"
+            android:textSize="20sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="CastMember5" />
+
+
+    </LinearLayout>
+
+</ScrollView>

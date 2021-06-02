@@ -50,17 +50,16 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
         LocationListener {
 
     public static GoogleMap TheMap;
-    GoogleApiClient client;
+    private GoogleApiClient client;
     public static final int REQUEST_LOCATION_CODE=99;
-    LocationRequest locationRequest;
-    Location LastLocation;
-    Marker CurrentLocationMarker;
-    double latitude;
-    double longitude;
+    private LocationRequest locationRequest;
+    private Location LastLocation;
+    private Marker CurrentLocationMarker;
+    private double latitude;
+    private double longitude;
     public static RecyclerView rvTheaters;
     public static Context mycontext;
     public static LatLng HomeLatLng;
-
     public static List<HashMap<String,String>> AllLocations;
 
 
@@ -114,7 +113,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
     }
 
 
-    public synchronized void buildGoogleAPIClient(){         //doubt this will work
+    public synchronized void buildGoogleAPIClient(){
         client=new GoogleApiClient.Builder(this.getContext())
                 .addConnectionCallbacks( this )
                 .addOnConnectionFailedListener(this)
@@ -135,11 +134,6 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
             CurrentLocationMarker.remove();
 
         LatLng latLng=new LatLng(location.getLatitude(),location.getLongitude());
-
-
-
-
-
         MarkerOptions markerOptions=new MarkerOptions();        //used to set colors,titles etc
         markerOptions.position(latLng);
         markerOptions.title("Your Location");
@@ -151,7 +145,7 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
 
         TheMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,11));
 
-        final Handler handler = new Handler();
+        final Handler handler = new Handler();      //brief delay so user can see the marker label that indcates position
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -225,24 +219,19 @@ public class MapsFragment extends Fragment implements OnMapReadyCallback,
         String Longitude=String.valueOf(longitude);
         Object dataTransfer[]=new Object[2];
         dataTransfer[0]=TheMap;
-       // String SearchString="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
-        //        +Latitude+","+Longitude+"&radius=30000&name=theater&keyword=Regal&keyword=CMX&keyword=" +
-         //       "Cineplex&keyword=IMAX&keyword=Cinemark&key=AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
 
         String SearchString="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="
-                +Latitude+","+Longitude+"&radius=30000&name=theater&key=AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
+                +Latitude+","+Longitude+"&radius=50000&name=theater&key="+getResources().getString(R.string.google_maps_key);
 
 
         dataTransfer[1]=SearchString;
         LocalMovieTheaters object=new LocalMovieTheaters();
         object.execute(dataTransfer);
 
-        //String SearchString="https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=30.192532,-81.564995&radius=30000&name=theater&keyword=Regal&keyword=CMX&keyword=Cineplex&keyword=IMAX&keyword=Cinemark&key=AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
-      //  https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=30.192532,-81.564995&radius=30000&name=theater&keyword=Regal&keyword=CMX&keyword=Cineplex&keyword=IMAX&keyword=Cinemark&key=AIzaSyDMg3b4aByb4RcbZM8a0siyx0z31IHjDT8";
 
     }
 
-    public static void BindAdapter(List<HashMap<String,String>> AllPlaces){                 //idk if another context will work
+    public static void BindAdapter(List<HashMap<String,String>> AllPlaces){
         TheaterAdapter theaterAdapter=new TheaterAdapter(mycontext,AllPlaces);
         rvTheaters.setAdapter(theaterAdapter);
         rvTheaters.setLayoutManager(new LinearLayoutManager(mycontext));

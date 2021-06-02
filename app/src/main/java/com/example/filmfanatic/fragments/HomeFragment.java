@@ -41,12 +41,13 @@ import okhttp3.Headers;
 
 public class HomeFragment extends Fragment  {
 
-    public static final String NOW_PLAYING_URL="https://api.themoviedb.org/3/movie/now_playing?api_key=a07e22bc18f5cb106bfe4cc1f83ad8ed";
+
+    public static String NOW_PLAYING_URL;
     public static final String TAG="HomeFragment";
 
-    List<Movie> MovieList;
-    RecyclerView rvMovies;
-    ContentLoadingProgressBar progressBar;
+    private List<Movie> MovieList;
+    private RecyclerView rvMovies;
+    private ContentLoadingProgressBar progressBar;
 
     public static int WishListCount;
 
@@ -55,12 +56,11 @@ public class HomeFragment extends Fragment  {
 
     }
 
-
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        NOW_PLAYING_URL="https://api.themoviedb.org/3/movie/now_playing?api_key=" + getResources().getString(R.string.MovieDBAPIKey);
         rvMovies=view.findViewById(R.id.rvEachMovie);
         MovieList=new ArrayList<>();
         progressBar=view.findViewById(R.id.progress);
@@ -74,6 +74,7 @@ public class HomeFragment extends Fragment  {
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
             public void onSuccess(int i, Headers headers, JSON json) {
+
                 progressBar.hide();
                 Log.d(TAG,"onSuccess");
                 JSONObject jsonObject=json.jsonObject;
@@ -95,10 +96,10 @@ public class HomeFragment extends Fragment  {
             }
         });
 
-        ParseQuery<Film> query=ParseQuery.getQuery(Film.class);
-        query.include(Film.KEY_USER);
-        query.whereEqualTo(Film.KEY_USER, ParseUser.getCurrentUser());      //I think this is the crucial line
-        query.addDescendingOrder(Film.KEY_CREATED_AT);      //orders posts by time
+        ParseQuery<Film> query=ParseQuery.getQuery(Film.class);     //getting wishlist count to determine which layout should be used for
+        query.include(Film.KEY_USER);                               //wishlist fragment
+        query.whereEqualTo(Film.KEY_USER, ParseUser.getCurrentUser());
+        query.addDescendingOrder(Film.KEY_CREATED_AT);
         query.findInBackground(new FindCallback<Film>() {
             @Override
             public void done(List<Film> thefilms, ParseException e) {

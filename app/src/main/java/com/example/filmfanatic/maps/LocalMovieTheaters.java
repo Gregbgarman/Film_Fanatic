@@ -27,10 +27,9 @@ import javax.net.ssl.HttpsURLConnection;
 public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
 
 
-    String googlePlacesData;
-    GoogleMap googleMap;
-    String url;
-
+    private String googlePlacesData;
+    private GoogleMap googleMap;
+    private String url;
     public static List<HashMap<String,String>> NearbyPlaceList;
 
 
@@ -95,7 +94,7 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
             BufferedReader br=new BufferedReader(new InputStreamReader(inputStream));
             StringBuffer sb=new StringBuffer();
 
-            String line="";                                     //if not null, append to stringbuffer, and convert to string
+            String line="";                                     //if not null, appends to stringbuffer, and convert to string
             while((line=br.readLine())!=null){
                 sb.append(line);
             }

@@ -66,11 +66,11 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvName;
-        TextView tvAddress;
-        TextView tvDistance;
-        Button btnMore;
-        Button btnLocation;
+        private TextView tvName;
+        private TextView tvAddress;
+        private TextView tvDistance;
+        private Button btnMore;
+        private Button btnLocation;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -97,7 +97,7 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
 
             tvDistance.setText( String.format("%.2f", Miles) + " mi");
 
-            btnLocation.setOnClickListener(new View.OnClickListener() {
+            btnLocation.setOnClickListener(new View.OnClickListener() {     //clicking button moves map camera to new location
                 @Override
                 public void onClick(View v) {
 
@@ -113,7 +113,6 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
                                     .title(AllPlaces.get(i).get("place_name").toString() )
                                     .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
                             marker.showInfoWindow();
-
 
                         }
 
@@ -131,7 +130,6 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
                             .title(("You"))
                             .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
 
-                   // MapsFragment.TheMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Currentlat,Currentlng),11));
                     MapsFragment.TheMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Currentlat,Currentlng),11));
                 }
             });
@@ -142,7 +140,6 @@ public class TheaterAdapter extends RecyclerView.Adapter<TheaterAdapter.ViewHold
                     Intent i=new Intent(context,TheaterActivity.class);
                     i.putExtra("TheaterInfo",Parcels.wrap(hashMap));
                     context.startActivity(i);
-
 
                 }
             });

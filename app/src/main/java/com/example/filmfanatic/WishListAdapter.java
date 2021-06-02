@@ -60,9 +60,9 @@ public class WishListAdapter extends RecyclerView.Adapter<WishListAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvTitle;
-        ImageView ivPoster;
-        ConstraintLayout container;
+        private TextView tvTitle;
+        private ImageView ivPoster;
+        private ConstraintLayout container;
 
 
         public ViewHolder(@NonNull View itemView) {
