@@ -6,6 +6,8 @@
 
     <string name="MovieDBAPIKey">put movie database api key here</string>
     <string name="YoutubeAPIKey">put youtube api key here</string>
+     <string name="ParseAppID">parse app id here</string>
+    <string name="ParseClientkey">parse client key here</string>
 
 
 </resources>
