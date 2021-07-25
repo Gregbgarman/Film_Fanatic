@@ -26,7 +26,7 @@ opportunity for learning new skills and reinforcing old ones.
 ## Walkthrough videos of features
 
 ### creating account and Viewing movies currently playing
-<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/walkthrough1.gif" width=250 blah blah blah>
+<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/walkthrough1.gif" width=250><br>
 
 
 ### Leaving movie review and adding movie to Wishlist
