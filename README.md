@@ -2,7 +2,7 @@
 
 <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage2.PNG" width=250> &nbsp;&nbsp; &nbsp;  <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage4.PNG" width=250> &nbsp;&nbsp; &nbsp;  <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage3.PNG" width=250><br>
 
-<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage7.PNG" width=250> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage5.PNG" width=250> &nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage6.PNG" width=250><br>
+<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage7.PNG" width=250> &nbsp;&nbsp; &nbsp;  <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage5.PNG" width=250> &nbsp;&nbsp; &nbsp;  <img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage6.PNG" width=250><br>
 
 ## Overview
 Film Fanatic is a movie app that allows users to gain information on current movies playing and nearby theaters
