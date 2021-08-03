@@ -1,5 +1,7 @@
 # Film Fanatic (Solo Project)
 
+<img src="https://github.com/Gregbgarman/Film_Fanatic/blob/master/FFgoodimage2.PNG" width=250><br>
+
 ## OverView
 Film Fanatic is a movie app that allows users to gain information on current movies playing and nearby theaters
 
