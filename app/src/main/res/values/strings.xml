@@ -4,8 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <string name="MovieDBAPIKey">put movie database api key here</string>
-    <string name="YoutubeAPIKey">put youtube api key here</string>
+    <string name="MovieDBAPIKey">a07e22bc18f5cb106bfe4cc1f83ad8ed</string>
+    <string name="YoutubeAPIKey">AIzaSyChn4bC3zVTpy0TYbJQl3FwvcDB7d8p5JA</string>
+    <string name="ParseAppID">awtRKAKAa3XBovrGDxcpclc1Hu517uRiCFzMhimo</string>
+    <string name="ParseClientkey">sVQEkWsDoor6tETNcQK1t8yxKoqz49kYlfrhKGrE</string>
 
 
 </resources>

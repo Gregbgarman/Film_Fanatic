@@ -125,6 +125,9 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
             HMArray[i]=NearbyPlaceList.get(i);
         }
 
+        DoMergeSort(HMArray);       //MergeSort Used to sort theaters by distance
+
+/*
         for (int i=0;i<NearbyPlaceList.size();i++){
             for (int j=0;j<NearbyPlaceList.size()-1;j++){
                 if (Double.parseDouble(HMArray[j].get("distance_away"))>Double.parseDouble(HMArray[j+1].get("distance_away"))){
@@ -134,7 +137,7 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
                 }
             }
         }
-
+*/
         NearbyPlaceList.clear();
 
         for (int i=0;i<HMArray.length;i++){
@@ -142,6 +145,50 @@ public class LocalMovieTheaters extends AsyncTask<Object, String, String> {
         }
 
 
+    }
+
+    private void DoMergeSort(HashMap<String,String> HMArray[]){
+        MergeSort(HMArray,new HashMap[HMArray.length],0,HMArray.length-1);
+
+    }
+
+    private void MergeSort(HashMap<String,String> array[],HashMap<String,String> temp[],int leftstart,int rightend){
+        if (leftstart>=rightend) {
+            return;
+        }
+
+        int middle=(leftstart+rightend)/2;
+        MergeSort(array,temp,leftstart,middle);
+        MergeSort(array,temp,middle+1,rightend);
+        mergeHalves(array,temp,leftstart,rightend);
+    }
+
+    private void mergeHalves(HashMap<String,String> [] array, HashMap<String,String> [] temp, int leftstart,int rightend) {
+        int leftend=(rightend+leftstart)/2;
+        int rightstart=leftend+1;
+        int size=rightend-leftstart+1;
+
+        int left=leftstart;
+        int right=rightstart;
+        int index=leftstart;
+
+        while(left<=leftend && right<= rightend) {
+
+            if (Double.parseDouble(array[left].get("distance_away"))<=Double.parseDouble(array[right].get("distance_away"))){
+                temp[index]=array[left];
+                left++;
+
+            }
+            else {
+                temp[index]=array[right];
+                right++;
+            }
+            index++;
+        }
+
+        System.arraycopy(array,left,temp,index,leftend-left+1);			//this is faster than a for loop
+        System.arraycopy(array,right,temp,index,rightend-right+1);
+        System.arraycopy(temp,leftstart,array,leftstart,size);
     }
 
 }

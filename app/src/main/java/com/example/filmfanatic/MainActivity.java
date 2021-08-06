@@ -9,8 +9,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-
-import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,15 +29,12 @@ import com.example.filmfanatic.fragments.HomeFragment;
 import com.example.filmfanatic.fragments.SettingsFragment;
 import com.example.filmfanatic.fragments.WishListFragment;
 import com.example.filmfanatic.maps.MapsFragment;
-import com.example.filmfanatic.maps.PlacesData;
-import com.example.filmfanatic.maps.TheaterActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.parse.LogOutCallback;
 import com.parse.ParseException;
 import com.parse.ParseFile;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity implements SettingsFragment.SettingsFragmentInterface {

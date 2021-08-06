@@ -1,31 +1,19 @@
 package com.example.filmfanatic;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.example.filmfanatic.fragments.HomeFragment;
 import com.example.filmfanatic.fragments.WishListFragment;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
-import com.parse.FindCallback;
-import com.parse.ParseException;
 import com.parse.ParseQuery;
-import com.parse.ParseUser;
-
 import org.parceler.Parcels;
-
-import java.util.Date;
-import java.util.List;
 
 public class WishListActivity extends YouTubeBaseActivity {
 
