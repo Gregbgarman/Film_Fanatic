@@ -4,13 +4,10 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-
-
-    <string name="MovieDBAPIKey">key here</string>
-    <string name="YoutubeAPIKey">key here</string>
-    <string name="ParseAppID">key here</string>
-    <string name="ParseClientkey">key here</string>
-
+    <string name="MovieDBAPIKey">put movie database api key here</string>
+    <string name="YoutubeAPIKey">put youtube api key here</string>
+     <string name="ParseAppID">parse app id here</string>
+    <string name="ParseClientkey">parse client key here</string>
 
 
 </resources>
