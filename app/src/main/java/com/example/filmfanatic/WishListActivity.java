@@ -43,7 +43,7 @@ public class WishListActivity extends YouTubeBaseActivity {
         Float f=(float)film.getFilmRating()/2;
         tvRating.setText(f.toString() + "/5");
 
-        youTubePlayerView.initialize(MovieExpandedActivity.YOUTUBE_API_KEY, new YouTubePlayer.OnInitializedListener() {
+        youTubePlayerView.initialize(getResources().getString(R.string.YoutubeAPIKey), new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
                 Log.d(TAG, "onSuccess");
@@ -69,7 +69,6 @@ public class WishListActivity extends YouTubeBaseActivity {
                                 WishListFragment.films.remove(WishListAdapter.adapterposition);
                                 WishListFragment.wishListAdapter.notifyItemRemoved(WishListAdapter.adapterposition);
                                 HomeFragment.WishListCount--;
-
 
 
                             }else{

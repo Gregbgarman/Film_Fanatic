@@ -228,9 +228,6 @@ public class MovieExpandedActivity extends YouTubeBaseActivity {
         });
 
 
-
-
-
         AddtoWishList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
